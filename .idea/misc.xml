@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/api-gateway-ms/pom.xml" />
         <option value="$PROJECT_DIR$/apigateway-ms/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-ms/pom.xml" />
+        <option value="$PROJECT_DIR$/student-ms-s2/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

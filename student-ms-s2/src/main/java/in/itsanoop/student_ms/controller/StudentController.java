@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/student")
 public class StudentController {
     private StudentService studentService;
+
     Logger logger = LoggerFactory.getLogger(StudentController.class);
     public StudentController(StudentService studentService) {
         this.studentService = studentService;

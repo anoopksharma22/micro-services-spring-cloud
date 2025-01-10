@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="address-ms (1)" />
-        <module name="gateway-ms" />
         <module name="address-ms" />
         <module name="address-ms (2)" />
         <module name="eureka-ms" />
+        <module name="student-ms (1)" />
+        <module name="gateway-ms" />
         <module name="student-ms" />
       </profile>
     </annotationProcessing>
@@ -29,6 +30,7 @@
       <module name="eureka-ms" options="-parameters" />
       <module name="gateway-ms" options="-parameters" />
       <module name="student-ms" options="-parameters" />
+      <module name="student-ms (1)" options="-parameters" />
     </option>
   </component>
 </project>
