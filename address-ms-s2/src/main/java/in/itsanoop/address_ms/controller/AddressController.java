@@ -5,6 +5,8 @@ import in.itsanoop.address_ms.dto.AddressResponseDto;
 import in.itsanoop.address_ms.mapper.AdrressMapper;
 import in.itsanoop.address_ms.model.Address;
 import in.itsanoop.address_ms.service.AddressService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/address")
 public class AddressController {
+
+    Logger logger = LoggerFactory.getLogger(AddressController.class);
 
     private AddressService addressService;
 
@@ -44,6 +48,7 @@ public class AddressController {
 
     @GetMapping("/addressById/{id}")
     public ResponseEntity<AddressResponseDto> getAddressById(@PathVariable Integer id){
+        logger.info("Serving get address by id " + id);
         AddressResponseDto addressResponseDto = new AddressResponseDto();
         Address address = addressService.getAddressById(id);
         AdrressMapper.toAddressResponseDto(address, addressResponseDto);

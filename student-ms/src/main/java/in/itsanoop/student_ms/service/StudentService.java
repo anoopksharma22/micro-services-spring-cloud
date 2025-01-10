@@ -4,6 +4,7 @@ import in.itsanoop.student_ms.dto.AddressDto;
 import in.itsanoop.student_ms.dto.StudentDto;
 import in.itsanoop.student_ms.exceptions.StudentNotFoundException;
 import in.itsanoop.student_ms.feignclients.AddressFeignClient;
+import in.itsanoop.student_ms.feignclients.GlobalFeignClient;
 import in.itsanoop.student_ms.mapper.StudentMapper;
 import in.itsanoop.student_ms.model.Student;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,11 @@ public class StudentService {
 
     private StudentRepository studentRepository;
     private AddressFeignClient addressFeignClient;
+    private GlobalFeignClient globalFeignClient;
 
-    public StudentService(StudentRepository studentRepository, AddressFeignClient addressFeignClient) {
+    public StudentService(StudentRepository studentRepository, GlobalFeignClient globalFeignClient) {
         this.studentRepository = studentRepository;
-        this.addressFeignClient = addressFeignClient;
+        this.globalFeignClient = globalFeignClient;
     }
 
     public Student createStudent(Student student) {
@@ -33,7 +35,7 @@ public class StudentService {
         for( Student s: students){
             StudentDto studentDto= new StudentDto();
             StudentMapper.toStudentDto(s,studentDto);
-            studentDto.setAddressDto(addressFeignClient.getAddressById(s.getAddressId()));
+            studentDto.setAddressDto(globalFeignClient.getAddressById(s.getAddressId()));
             studentDtos.add(studentDto);
         }
 
@@ -47,7 +49,7 @@ public class StudentService {
         }
         StudentDto studentDto = new StudentDto();
         StudentMapper.toStudentDto(s, studentDto);
-        studentDto.setAddressDto(addressFeignClient.getAddressById(s.getAddressId()));
+        studentDto.setAddressDto(globalFeignClient.getAddressById(s.getAddressId()));
         return studentDto;
     }
 }
